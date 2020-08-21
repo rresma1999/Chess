@@ -8,6 +8,9 @@
 
 import Foundation
 
+/*
+ Piece protocol only retains x and y coordinate locations
+ */
 protocol Piece {
     var x: CGFloat {get set}
     var y: CGFloat {get set}
