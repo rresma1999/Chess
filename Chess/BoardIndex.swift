@@ -24,6 +24,6 @@ struct BoardIndex: Equatable {
     // Equatable true equality function
     // return true if lhs == rhs, false otw
     static func ==(lhs: BoardIndex, rhs: BoardIndex) -> Bool {
-        return (lhs.row == rhs.row && lhs.col == rhs.col) 
+        return (lhs.row == rhs.row && lhs.col == rhs.col)
     }
 }
