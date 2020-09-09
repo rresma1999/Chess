@@ -18,17 +18,21 @@ class ViewController: UIViewController {
     var pieceDragged: UIChessPiece!
     var srcOrigin: CGPoint!
     var destOrigin: CGPoint!
+    // constant vars to help with instantiation of chess board
     static var SPACE_FROM_LEFT_EDGE: Int = 27
-    static var SPACE_FROM_TOP_EDGE: Int = 224
+    static var SPACE_FROM_TOP_EDGE: Int = 269
     static var TILE_SIZE: Int = 45
-    
+    // current chess game object
     var myChessGame: ChessGame!
+    // model array
     var chessPieces: [UIChessPiece]!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        // instantiate model array and chess game object
+        self.chessPieces = []
+        self.myChessGame = ChessGame(viewController: self)
     }
 
 

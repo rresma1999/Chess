@@ -10,5 +10,11 @@ import Foundation
 import UIKit
 
 class ChessGame: NSObject {
+    // current chess board object
+    var theChessBoard: ChessBoard!
     
+    // constructor
+    init(viewController: ViewController) {
+        theChessBoard = ChessBoard(viewController: viewController)
+    }
 }
