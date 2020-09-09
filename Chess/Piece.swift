@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 /*
  Piece protocol only retains x and y coordinate locations
