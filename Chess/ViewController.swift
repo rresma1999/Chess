@@ -54,7 +54,36 @@ class ViewController: UIViewController {
     // 1. make sure the center of the piece is in the center of the tile
     // 2. make sure that it is a legal move?
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        <#code#>
+        if pieceDragged != nil {
+            // access the last touch
+            let touchLocation = touches.first!.location(in: view)
+            
+            // determining the exact tile origin of the end location
+            var x = Int(touchLocation.x)
+            var y = Int(touchLocation.y)
+            // subtract off the edge lengths and nullify the extra insets
+            x -= ViewController.SPACE_FROM_LEFT_EDGE
+            y -= ViewController.SPACE_FROM_TOP_EDGE
+            x = (x / ViewController.TILE_SIZE) * ViewController.TILE_SIZE
+            y = (y / ViewController.TILE_SIZE) * ViewController.TILE_SIZE
+            
+            // finally re-add the edge lengths
+            x += ViewController.SPACE_FROM_LEFT_EDGE
+            y += ViewController.SPACE_FROM_TOP_EDGE
+            
+            destOrigin = CGPoint(x: x, y: y)
+            
+            // calculate the exact tile index on the chess board
+            let sourceIndex = BoardIndex(r: 0, c: 0)
+            let destIndex = BoardIndex(r: 0, c: 0)
+            
+            // ensure that the move is actually legal
+            if myChessGame.isMoveValid(piece: pieceDragged, fromIndex: sourceIndex, toIndex: destIndex) {
+                pieceDragged.frame.origin = destOrigin
+            } else {
+                pieceDragged.frame.origin = sourceOrigin
+            }
+        }
     }
 
     // helper function to handle click and drag action
