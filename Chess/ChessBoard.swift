@@ -17,6 +17,14 @@ class ChessBoard: NSObject {
     var whiteKing: King!
     var blackKing: King!
     
+    // class function to return the exact tile index of the passed in origin
+    static func indexOf(origin: CGPoint) -> BoardIndex {
+        // convert from CG Point to Tile units
+        let row = (Int(origin.y) - ViewController.SPACE_FROM_TOP_EDGE) / ViewController.TILE_SIZE
+        let col = (Int(origin.y) - ViewController.SPACE_FROM_LEFT_EDGE) / ViewController.TILE_SIZE
+        return BoardIndex(r: row, c: col)
+    }
+    
     // class function to return the frame for any chess board based on the (r, c)
     static func getFrame(forRow row: Int, forCol col: Int) -> CGRect {
         // compute the x coordinate and y coordinate with some clever spacing

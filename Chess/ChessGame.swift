@@ -20,6 +20,6 @@ class ChessGame: NSObject {
     
     // MARK: implement
     func isMoveValid(piece: UIChessPiece, fromIndex sourceIndex: BoardIndex, toIndex destIndex: BoardIndex) -> Bool {
-        return true
+        return false
     }
 }

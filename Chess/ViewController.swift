@@ -74,8 +74,8 @@ class ViewController: UIViewController {
             destOrigin = CGPoint(x: x, y: y)
             
             // calculate the exact tile index on the chess board
-            let sourceIndex = BoardIndex(r: 0, c: 0)
-            let destIndex = BoardIndex(r: 0, c: 0)
+            let sourceIndex = ChessBoard.indexOf(origin: sourceOrigin)
+            let destIndex = ChessBoard.indexOf(origin: destOrigin)
             
             // ensure that the move is actually legal
             if myChessGame.isMoveValid(piece: pieceDragged, fromIndex: sourceIndex, toIndex: destIndex) {
