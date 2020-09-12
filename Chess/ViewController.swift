@@ -79,7 +79,7 @@ class ViewController: UIViewController {
             
             // ensure that the move is actually legal
             if myChessGame.isMoveValid(piece: pieceDragged, fromIndex: sourceIndex, toIndex: destIndex) {
-                pieceDragged.frame.origin = destOrigin
+                myChessGame.move(piece: pieceDragged, fromIndex: sourceIndex, toIndex: destIndex, toOrigin: destOrigin)
             } else {
                 pieceDragged.frame.origin = sourceOrigin
             }
