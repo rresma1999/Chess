@@ -78,12 +78,20 @@ class ViewController: UIViewController {
             let destIndex = ChessBoard.indexOf(origin: destOrigin)
             
             // ensure that the move is actually legal
-            if myChessGame.isMoveValid(piece: pieceDragged, fromIndex: sourceIndex, toIndex: destIndex) {
-                myChessGame.move(piece: pieceDragged, fromIndex: sourceIndex, toIndex: destIndex, toOrigin: destOrigin)
+            if self.myChessGame.isMoveValid(piece: pieceDragged, fromIndex: sourceIndex, toIndex: destIndex) {
+                self.myChessGame.move(piece: pieceDragged, fromIndex: sourceIndex, toIndex: destIndex, toOrigin: destOrigin)
+                self.myChessGame.nextTurn()
+                self.updateTurnOnScreen()
             } else {
                 pieceDragged.frame.origin = sourceOrigin
             }
         }
+    }
+    
+    // UI change made to turn label after every move
+    func updateTurnOnScreen() {
+        self.displayTurnLabel.text = self.myChessGame.isWhiteTurn ? "White's turn" : "Black turn"
+        self.displayTurnLabel.textColor = self.myChessGame.isWhiteTurn ? #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     }
 
     // helper function to handle click and drag action
